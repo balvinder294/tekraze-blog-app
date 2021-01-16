@@ -1,0 +1,122 @@
+::ng-deep .ez-toc-black {
+    background: #000;
+    border-radius: 1em;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+::ng-deep .ez-toc-black ul {
+    background: 0 0;
+list-style: none none;
+line-height: 1.6;
+margin: 0;
+overflow: hidden;
+z-index: 1;
+padding: 0%;
+}
+
+::ng-deep ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+::ng-deep #postDetail h2 {
+    font-family: Roboto Slab,Sans-Serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.2;
+    padding-bottom: 5%;
+    color: #4d2b9c;
+}
+
+::ng-deep #postDetail > h3 {
+    font-family: Roboto Slab,Sans-Serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
+    padding-bottom: 5%;
+    color: #FB454D;
+}
+
+::ng-deep #postDetail h4 {
+    font-family: Roboto Slab,Sans-Serif;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 1.2;
+    padding-bottom: 5%;
+    color: darkblue;
+}
+
+::ng-deep #postDetail p {
+    font-family: Roboto Slab,Sans-Serif;
+}
+
+::ng-deep .ez-toc-title-container {
+    display: table;
+    width: 100%;
+}
+
+::ng-deep .ez-toc-black p.ez-toc-title {
+    color: #fff;
+}
+
+::ng-deep p.ez-toc-title {
+    font-weight: 500;
+    // font-size: 120%;
+    text-align: left;
+    line-height: 1.45;
+    margin: 0;
+    padding: 0;
+
+    display: table-cell;
+    vertical-align: middle;
+}
+
+::ng-deep .su-note {
+    margin: 0 0 1.5em;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #E2DCD3;
+    border-radius: 1em;
+    margin-top: 10px;
+}
+
+::ng-deep .su-note-inner {
+    padding: 1em;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 1em;
+}
+
+::ng-deep pre.EnlighterJSRAW {
+    padding: 10px 20px;
+    overflow: auto;
+    color:#000  ;
+    margin-left: 20px;
+    border: black;
+    border-radius: 2em;
+    background-color: antiquewhite;
+}
+
+::ng-deep hr {
+    width: 2px;
+    padding: 1px 30%;
+    background-color: #FB454D;
+}
+
+::ng-deep figcaption {
+    text-align: center;
+    color: brown;
+}
+
+::ng-deep #postDetail hr .wp-block-separator {
+    clear: both;
+    margin-top: calc(var(--contentSpacing) + 10px);
+    margin-bottom: calc(var(--contentSpacing) + 10px);
+    max-width: var(--block-max-width);
+}

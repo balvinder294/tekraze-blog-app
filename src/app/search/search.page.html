@@ -1,0 +1,47 @@
+<ion-header color="medium">
+  <ion-toolbar color="medium">
+    <ion-searchbar color="light" [(ngModel)]="searchQuery" 
+      showCancelButton="focus" 
+      (ionCancel)="goHome()" 
+      (ionChange)="onSearch()" animated></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium" class="ion-padding">
+  <ion-card *ngFor='let item of items' (click)="openDetail(item)">
+    <ion-img [src]="item._embedded['wp:featuredmedia'][0].source_url"></ion-img>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title [innerHTML]="item.title.rendered" >{{item.title.rendered}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-sm="12" offset-md="3" size-md="6">
+            <ion-item (click)="openDetail(item)">
+              <ion-avatar slot="start">
+                <img src="{{item._embedded.author[0].avatar_urls['48']}}">
+              </ion-avatar>
+              <ion-label>{{item._embedded.author[0].name}}</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" size-md="3">
+            <ion-badge *ngIf="item._embedded['wp:term'][0][0].taxonomy === 'category'" color="tertiary">
+              <span [innerHTML]="item._embedded['wp:term'][0][0].name"></span>&nbsp;
+            </ion-badge>
+          </ion-col>
+          <ion-col size-sm="6" size-md="3">
+            <ion-badge color="tertiary">
+              <span timeago [date]="item.date" [live]="'true'"></span>
+            </ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-text-center ion-padding" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-button *ngIf="showLoadMore" (click)="getPosts()" expand="full">Load More</ion-button>
+</ion-content>
