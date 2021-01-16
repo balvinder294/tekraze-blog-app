@@ -1,0 +1,7 @@
+{
+  "name": "tekraze",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
