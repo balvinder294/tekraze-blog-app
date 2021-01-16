@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1096665669488",
+    "project_id": "tekraze-mobile-app",
+    "storage_bucket": "tekraze-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096665669488:android:81c31d76724c7ed352b9b5",
+        "android_client_info": {
+          "package_name": "com.tekraze.blog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096665669488-jiei9nud26jdgh0shc3cjfguqdeo9fal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXbtzwJe5YfwyVfCk4q7egYtQbVSAPwdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096665669488-jiei9nud26jdgh0shc3cjfguqdeo9fal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

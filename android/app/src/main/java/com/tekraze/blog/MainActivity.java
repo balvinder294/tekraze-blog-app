@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.tekraze.blog;
 
 import android.os.Bundle;
 

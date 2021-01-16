@@ -72,7 +72,13 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.googleAnalytic.startTrackerWithId('259124159');
+      this.googleAnalytic.startTrackerWithId('259124159')
+        .then(() => {
+          this.googleAnalytic.trackView('Home Page Initial');
+        })
+        .catch(err => {
+          console.log(err);
+        })
     });
   }
 
