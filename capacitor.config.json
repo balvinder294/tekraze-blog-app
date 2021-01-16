@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "tekraze",
+  "appId": "com.tekraze.blog",
+  "appName": "Tekraze Blog",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

@@ -8,6 +8,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api.service';
+import { TimeagoModule } from 'ngx-timeago';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,13 +19,17 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    TimeagoModule.forRoot(),
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ApiService,
+    GoogleAnalytics
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule {}
