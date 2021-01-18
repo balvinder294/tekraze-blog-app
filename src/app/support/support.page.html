@@ -1,11 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Support Tekraze</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Support Tekraze</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
+<ion-content color="medium">
+  <ion-card color="light">
     <ion-card-header>
       <ion-card-title class="ion-text-center">Support us</ion-card-title>
     </ion-card-header>
@@ -13,11 +16,15 @@
       <p>Thanks for installing this App</p>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngIf="mobileAppFlag">
+  <ion-card color="light" *ngIf="mobileAppFlag">
     <ion-card-content>
-      <p>Please, view an advertisement to support us.</p>
+      <p>Please, view an advertisement to support us.
+        Or visit <a (click)="visitWebsite()">Tekraze.com</a> website
+      </p>
       <ion-button (click)="showVideoAd()" color="tertiary">Show Video Ad</ion-button>
       <ion-button (click)="showInterAd()" color="primary">Show Banner Ad</ion-button>
     </ion-card-content>
   </ion-card>
+  <br />
+  <small color="dark">Try Some time later if ads not show up. Thanks</small>
 </ion-content>

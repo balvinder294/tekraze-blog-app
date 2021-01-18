@@ -13,6 +13,7 @@ import { ApiService } from './api.service';
 import { TimeagoModule } from 'ngx-timeago';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { AdMob } from "@admob-plus/ionic";
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { AdMob } from "@admob-plus/ionic";
     ApiService,
     FirebaseX,
     AdMob,
+    InAppBrowser,
   ], 
   bootstrap: [AppComponent]
 })

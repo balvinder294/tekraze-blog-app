@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { AdsService } from './ads.service';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-root',
@@ -72,7 +73,8 @@ export class AppComponent implements OnInit {
     private firebase: FirebaseX,
     private alertController: AlertController,
     private _location: Location,
-    private adsService: AdsService
+    private adsService: AdsService,
+    private inAppBrowser: InAppBrowser
   ) {
     this.initializeApp();
     this.api.getCategoryAsPromise()
@@ -89,6 +91,7 @@ export class AppComponent implements OnInit {
         });
       this.adsService.showBannerAd();
       this.adsService.showInterstitialAd();
+      this.inAppBrowserFunc();
     });
     this.exitAppFunc();
   }
@@ -102,6 +105,24 @@ export class AppComponent implements OnInit {
 
   openSelectedCategory(id: any) {
     this.router.navigate(['category', id]);
+  }
+
+  inAppBrowserFunc() {
+    document.addEventListener('click', (e: any) => {
+      e.preventDefault();
+      const webLink = e.target.closest("a");
+      
+      if (webLink) {
+        if(webLink.href) {
+          let options: InAppBrowserOptions = {
+            hideurlbar: 'yes',
+            location: 'no'
+          }
+          this.inAppBrowser.create(webLink.href,'_self',options);
+        }
+      } 
+      return false;
+    });
   }
 
   exitAppFunc() {
