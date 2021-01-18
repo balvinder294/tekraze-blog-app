@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { AdsService } from './ads.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +30,11 @@ export class AppComponent implements OnInit {
       url: 'about',
       icon: 'information'
     },
+    {
+      title: 'Support us',
+      url: 'support',
+      icon: 'people'
+    }
     // {
     //   title: 'Outbox',
     //   url: '/folder/Outbox',
@@ -62,7 +69,10 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private api: ApiService,
     private router: Router,
-    private firebase: FirebaseX
+    private firebase: FirebaseX,
+    private alertController: AlertController,
+    private _location: Location,
+    private adsService: AdsService
   ) {
     this.initializeApp();
     this.api.getCategoryAsPromise()
@@ -77,7 +87,10 @@ export class AppComponent implements OnInit {
         .then(() => {
           this.firebase.setScreenName('App Menu');
         });
+      this.adsService.showBannerAd();
+      this.adsService.showInterstitialAd();
     });
+    this.exitAppFunc();
   }
 
   ngOnInit() {
@@ -88,6 +101,60 @@ export class AppComponent implements OnInit {
   }
 
   openSelectedCategory(id: any) {
-    this.router.navigate(['category',id]);
+    this.router.navigate(['category', id]);
+  }
+
+  exitAppFunc() {
+    this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+      console.log('Back press handler!');
+      if (this._location.isCurrentPathEqualTo('/') || this._location) {
+
+        // Show Exit Alert!
+        console.log('Show Exit Alert!');
+        this.showExitConfirm();
+        processNextHandler();
+      } else {
+
+        // Navigate to back page
+        console.log('Navigate to back page');
+        this._location.back();
+
+      }
+
+    });
+
+    this.platform.backButton.subscribeWithPriority(5, () => {
+      console.log('Handler called to force close!');
+      this.alertController.getTop().then(r => {
+        if (r) {
+          navigator['app'].exitApp();
+        }
+      }).catch(e => {
+        console.log(e);
+      })
+    });
+  }
+
+  showExitConfirm() {
+    this.alertController.create({
+      header: 'App termination',
+      message: 'Do you want to close the app?',
+      backdropDismiss: false,
+      buttons: [{
+        text: 'Stay',
+        role: 'cancel',
+        handler: () => {
+          console.log('Application exit prevented!');
+        }
+      }, {
+        text: 'Exit',
+        handler: () => {
+          navigator['app'].exitApp();
+        }
+      }]
+    })
+      .then(alert => {
+        alert.present();
+      });
   }
 }

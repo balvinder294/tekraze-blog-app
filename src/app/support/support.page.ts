@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { AdsService } from '../ads.service';
 
 @Component({
   selector: 'app-support',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupportPage implements OnInit {
 
-  constructor() { }
+  mobileAppFlag: boolean;
+
+  constructor(private platform: Platform, private adService: AdsService) { }
 
   ngOnInit() {
+    if(this.platform.is('android' || 'cordova' || 'capacitor')) {
+      this.mobileAppFlag = true;
+    }
+  }
+
+  showVideoAd() {
+    this.adService.showVideoAd();
+  }
+
+  showInterAd() {
+    this.adService.showInterstitialAd();
   }
 
 }

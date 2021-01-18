@@ -18,6 +18,8 @@ export class SearchPage implements OnInit {
   isLoading = false;
   searchQuery: string = '';
 
+  searchCount = 0;
+
   constructor(private router: Router, private api: ApiService, private firebase: FirebaseX) { }
 
   ngOnInit() {}

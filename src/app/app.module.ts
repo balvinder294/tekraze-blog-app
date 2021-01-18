@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { TimeagoModule } from 'ngx-timeago';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { AdMob } from "@admob-plus/ionic";
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ApiService,
     FirebaseX,
+    AdMob,
   ], 
   bootstrap: [AppComponent]
 })

@@ -6,8 +6,8 @@ android {
         applicationId "com.tekraze.blog"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 212
-        versionName '2.1.2'
+        versionCode 214
+        versionName '2.1.4'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
