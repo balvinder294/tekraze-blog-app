@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { TimeagoModule } from 'ngx-timeago';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 @NgModule({

@@ -6,8 +6,9 @@
     <param name="android-package" value="org.apache.cordova.device.Device"/>
   </feature>
 
-  <feature name="UniversalAnalytics">
-    <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin"/>
+  <feature name="FirebasePlugin">
+    <param name="android-package" value="org.apache.cordova.firebase.FirebasePlugin"/>
+    <param name="onload" value="true"/>
   </feature>
 
   <feature name="SocialSharing">
