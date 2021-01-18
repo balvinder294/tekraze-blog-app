@@ -6,7 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -61,7 +62,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private api: ApiService,
     private router: Router,
-    private googleAnalytic: GoogleAnalytics
+    private firebase: FirebaseX
   ) {
     this.initializeApp();
     this.api.getCategoryAsPromise()
@@ -72,13 +73,10 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.googleAnalytic.startTrackerWithId('259124159')
+      this.firebase.setAnalyticsCollectionEnabled(true)
         .then(() => {
-          this.googleAnalytic.trackView('Home Page Initial');
-        })
-        .catch(err => {
-          console.log(err);
-        })
+          this.firebase.setScreenName('App Menu');
+        });
     });
   }
 

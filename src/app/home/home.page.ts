@@ -6,8 +6,6 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Toast } from '@ionic-native/toast/ngx';
 import { HttpResponse } from '@angular/common/http';
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -28,12 +26,10 @@ export class HomePage implements OnInit {
     private api: ApiService,
     private socialSharing: SocialSharing,
     private toast: Toast,
-    private router: Router,
-    private googleAnalytics: GoogleAnalytics
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.googleAnalytics.trackView('Home Page');
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
       console.log(this.router.getCurrentNavigation().extras);
@@ -98,7 +94,6 @@ export class HomePage implements OnInit {
   }
 
   openDetail(item: any) {
-    this.googleAnalytics.trackView('Detail Page' + item.title.rendered);
     this.router.navigate(['detail', item.id], { state: { post: item } });
   }
 

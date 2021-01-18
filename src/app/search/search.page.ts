@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 @Component({
   selector: 'app-search',
@@ -18,15 +18,15 @@ export class SearchPage implements OnInit {
   isLoading = false;
   searchQuery: string = '';
 
-  constructor(private router: Router, private api: ApiService, private googleAnalytics: GoogleAnalytics) { }
+  constructor(private router: Router, private api: ApiService, private firebase: FirebaseX) { }
 
-  ngOnInit() {
-    this.googleAnalytics.trackView('Search Page');
-  }
+  ngOnInit() {}
 
 
   onSearch() {
-    this.googleAnalytics.trackEvent('Post Search', 'Search ' + this.searchQuery);
+    if(this.searchQuery) {
+      this.firebase.logEvent('search', {search_term: this.searchQuery});
+    }
     this.items = [];
     this.getPosts();
   }
@@ -66,7 +66,6 @@ export class SearchPage implements OnInit {
   }
 
   openDetail(item: any) {
-    this.googleAnalytics.trackView('Detail Page' + item.title.rendered);
     this.router.navigate(['detail', item.id], { state: { post: item } });
   }
 

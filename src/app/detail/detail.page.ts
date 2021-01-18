@@ -4,9 +4,6 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Toast } from '@ionic-native/toast/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { catchError, map } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 import { Comment } from '../../app/models/comment';
 import { HttpResponse } from '@angular/common/http';
@@ -39,7 +36,6 @@ export class DetailPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private api: ApiService,
-    private googleAnalytics: GoogleAnalytics
   ) {
     // this.vukkelApiKey = 'fefbadaf-276f-4f72-8e73-e1a2acb6e966';
     // this.vukkelCommentsUrl = `https://cdn.vuukle.com/amp.html?apiKey=${this.vukkelApiKey}&host=tekraze.com&id=${this.post.id}&img=${this.shareImage}&title=${this.post.title.rendered}&url=${this.post.link}`;
@@ -84,7 +80,6 @@ export class DetailPage implements OnInit {
   }
 
   openDetail(item: any) {
-    this.googleAnalytics.trackView('Detail page ' + item.title.rendered);
     this.router.navigate(['detail', item.id]);
     // this.adsService.incrementCounter();
     // this.navCtrl.push(DetailPage, {post: item});

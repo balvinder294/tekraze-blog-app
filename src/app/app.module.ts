@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { TimeagoModule } from 'ngx-timeago';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ApiService,
-    GoogleAnalytics
+    FirebaseX,
   ], 
   bootstrap: [AppComponent]
 })

@@ -5,7 +5,6 @@ import { ApiService } from '../api.service';
 
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Toast } from '@ionic-native/toast/ngx';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-category',
@@ -31,7 +30,6 @@ export class CategoryPage implements OnInit {
     private socialSharing: SocialSharing,
     private toast: Toast,
     private router: Router,
-    private googleAnalytics: GoogleAnalytics
   ) { }
 
   ngOnInit() {
@@ -39,7 +37,6 @@ export class CategoryPage implements OnInit {
       this.categoryId = categoryDetail.id;
       this.categoryName = categoryDetail.name;
       this.getPosts();
-      this.googleAnalytics.trackView('Category Page ' + this.categoryName);
     });
   }
 
@@ -86,7 +83,6 @@ export class CategoryPage implements OnInit {
   }
 
   openDetail(item: any) {
-    this.googleAnalytics.trackView('Detail Page ' + item.title.rendered);
     this.router.navigate(['detail', item.id], { state: { post: item } });
   }
 

@@ -10,6 +10,7 @@ import { SearchPage } from './search.page';
 
 import { TimeagoModule } from 'ngx-timeago';
 
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,7 @@ import { TimeagoModule } from 'ngx-timeago';
     SearchPageRoutingModule,
     TimeagoModule,
   ],
+  providers: [FirebaseX],
   declarations: [SearchPage]
 })
 export class SearchPageModule {}
